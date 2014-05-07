@@ -386,7 +386,7 @@ class FlickrAPI:
         if self.cache and self.cache.get(post_data):
             return self.cache.get(post_data)
 
-        url = "http://" + FlickrAPI.flickr_host + FlickrAPI.flickr_rest_form
+        url = "https://" + FlickrAPI.flickr_host + FlickrAPI.flickr_rest_form
         flicksocket = urllib.urlopen(url, post_data)
         reply = flicksocket.read()
         flicksocket.close()
@@ -440,7 +440,7 @@ class FlickrAPI:
                     "frob": frob,
                     "perms": perms})
 
-        return "http://%s%s?%s" % (FlickrAPI.flickr_host, \
+        return "https://%s%s?%s" % (FlickrAPI.flickr_host, \
             FlickrAPI.flickr_auth_form, encoded)
 
     def web_login_url(self, perms):
@@ -454,7 +454,7 @@ class FlickrAPI:
                     "api_key": self.api_key,
                     "perms": perms})
 
-        return "http://%s%s?%s" % (FlickrAPI.flickr_host, \
+        return "https://%s%s?%s" % (FlickrAPI.flickr_host, \
             FlickrAPI.flickr_auth_form, encoded)
 
     def __extract_upload_response_format(self, kwargs):
@@ -578,7 +578,7 @@ class FlickrAPI:
         
         if self.secret:
             kwargs["api_sig"] = self.sign(kwargs)
-        url = "http://%s%s" % (FlickrAPI.flickr_host, form_url)
+        url = "https://%s%s" % (FlickrAPI.flickr_host, form_url)
 
         # construct POST data
         body = Multipart()
